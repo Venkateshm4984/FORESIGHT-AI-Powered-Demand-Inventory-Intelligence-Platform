@@ -30,37 +30,80 @@ st.set_page_config(
     layout="wide",
 )
 
-# Visual direction: deep slate + teal (avoid generic purple/cream AI defaults)
+# Visual direction: deep slate + teal (high contrast theme-aware styling)
 st.markdown(
     """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
 html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 .block-container { padding-top: 1.2rem; padding-bottom: 2rem; max-width: 1280px; }
+
+/* Hero Banner */
 .hero {
   padding: 1.5rem 1.75rem;
   border-radius: 18px;
   background:
     radial-gradient(1200px 400px at 10% -20%, rgba(20,184,166,0.35), transparent 55%),
     linear-gradient(125deg, #0f172a 0%, #134e4a 55%, #0f766e 100%);
-  color: #f8fafc;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(148,163,184,0.25);
+  color: #ffffff !important;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 .hero h1 {
   margin: 0;
   font-family: 'Fraunces', Georgia, serif;
   font-size: 2.35rem;
   letter-spacing: -0.02em;
-  color: #f8fafc;
+  color: #ffffff !important;
 }
-.hero p { margin: 0.4rem 0 0; color: #ccfbf1; font-size: 1.02rem; }
-.metric-note { color: #64748b; font-size: 0.85rem; }
+.hero p {
+  margin: 0.4rem 0 0;
+  color: #2dd4bf !important;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+.metric-note { color: var(--text-color); opacity: 0.75; font-size: 0.85rem; }
+
+/* Metric Cards - Theme Aware & High Contrast */
 div[data-testid="stMetric"] {
-  background: linear-gradient(180deg, #f8fafc, #f1f5f9);
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 0.65rem 0.85rem;
+  background-color: var(--secondary-background-color, #1e293b) !important;
+  border: 1px solid rgba(148, 163, 184, 0.25) !important;
+  border-radius: 14px !important;
+  padding: 0.85rem 1rem !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+}
+div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
+  color: var(--text-color, #f8fafc) !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  opacity: 0.9 !important;
+}
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+  color: var(--text-color, #ffffff) !important;
+  font-size: 1.55rem !important;
+  font-weight: 700 !important;
+}
+div[data-testid="stMetric"] [data-testid="stMetricDelta"] {
+  font-weight: 600 !important;
+}
+
+/* Tabs Styling */
+button[data-baseweb="tab"] {
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  padding: 0.6rem 1.1rem !important;
+}
+button[data-baseweb="tab"][aria-selected="true"] {
+  color: #2dd4bf !important;
+  border-bottom-color: #2dd4bf !important;
+  font-weight: 700 !important;
+}
+
+/* Expander & Cards */
+.stExpander {
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+  border-radius: 10px !important;
 }
 </style>
 <div class="hero">
@@ -77,13 +120,22 @@ inventory_svc = InventoryService()
 
 PLOTLY_LAYOUT = dict(
     paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(248,250,252,0.6)",
-    font=dict(family="DM Sans, sans-serif", color="#0f172a"),
+    plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(family="DM Sans, sans-serif"),
+    xaxis=dict(
+        gridcolor="rgba(148, 163, 184, 0.15)",
+        zerolinecolor="rgba(148, 163, 184, 0.2)",
+    ),
+    yaxis=dict(
+        gridcolor="rgba(148, 163, 184, 0.15)",
+        zerolinecolor="rgba(148, 163, 184, 0.2)",
+    ),
     margin=dict(l=40, r=20, t=50, b=40),
 )
-TEAL = "#0f766e"
-AMBER = "#d97706"
-SLATE = "#334155"
+TEAL = "#14b8a6"
+AMBER = "#f59e0b"
+SLATE = "#94a3b8"
+
 
 
 @st.cache_data(show_spinner="Loading project datasets…")
