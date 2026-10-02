@@ -1,0 +1,12 @@
+__pycache__/
+.venv/
+venv/
+.streamlit/secrets.toml
+*.pyc
+.DS_Store
+
+# Supplied project data - keep raw confidential files out of public Git repositories
+data/raw/*.csv
+data/processed/*.csv
+__pycache__/
+.venv/
