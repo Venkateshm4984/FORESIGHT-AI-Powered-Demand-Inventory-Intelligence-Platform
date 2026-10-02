@@ -1,0 +1,15 @@
+key,value
+sales_rows,36550
+sales_skus,50
+sales_date_min,2024-01-01
+sales_date_max,2025-12-31
+master_in_scope,50
+calendar_rows,731
+inventory_rows,1200
+inventory_skus,50
+risk_rows,50
+provided_forecast_rows,200
+weekly_rows,5250
+promo_rate,0.10259917920656635
+total_units,511810.0
+total_revenue,3096056707.2200003

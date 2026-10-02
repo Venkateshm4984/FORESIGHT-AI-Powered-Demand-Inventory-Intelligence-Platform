@@ -1,0 +1,2 @@
+folds_evaluated,sku_count,mean_model_wape_percent,mean_seasonal_naive_wape_percent,mean_model_mae,mean_model_rmse,mean_seasonal_naive_mae,mean_seasonal_naive_rmse
+200,50,17.13,18.65,12.11,15.85,12.85,16.46

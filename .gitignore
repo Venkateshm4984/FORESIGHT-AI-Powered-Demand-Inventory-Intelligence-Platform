@@ -5,8 +5,7 @@ venv/
 *.pyc
 .DS_Store
 
-# Supplied project data - keep raw confidential files out of public Git repositories
-data/raw/*.csv
-data/processed/*.csv
+# Project data files are included for Streamlit cloud deployment
+
 __pycache__/
 .venv/
